@@ -12,12 +12,12 @@ namespace ConsoleApp3
             ChromeDriver driver = new ChromeDriver();
             driver.Navigate().GoToUrl("https://careers.veeam.ru/vacancies");
             driver.Manage().Window.Maximize();
-            driver.FindElement(By.XPath("//button[contains(text(), 'Все отделы')]")).Click();
-            driver.FindElement(By.XPath("//a[contains(text(), 'Разработка продуктов')]")).Click();
-            driver.FindElement(By.XPath("//button[contains(text(), 'Все языки')]")).Click();
-            driver.FindElement(By.XPath("//label[contains(text(), 'Английский')]")).Click();
-            var vacancies = driver.FindElements(By.CssSelector(".card.card-no-hover.card-sm"));
-            Console.WriteLine(vacancies.Count);
+            void Clicker(string s) => driver.FindElementByXPath(s).Click();
+            Clicker("//button[contains(text(), 'Все отделы')]");
+            Clicker("//a[contains(text(), 'Разработка продуктов')]");
+            Clicker("//button[contains(text(), 'Все языки')]");
+            Clicker("//label[contains(text(), 'Английский')]");
+            Console.WriteLine(driver.FindElements(By.CssSelector(".card.card-no-hover.card-sm")).Count);
         }
     }
 }
